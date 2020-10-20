@@ -1,0 +1,28 @@
+{
+  "name": "readmegenerator",
+  "version": "1.0.0",
+  "description": "Using this app, you will be able to quickly and easily generate a professional README.md file for your Github repository.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diemrbond/ReadmeGenerator.git"
+  },
+  "keywords": [
+    "professional",
+    "readme",
+    "generator"
+  ],
+  "author": "Andrew Kelleher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diemrbond/ReadmeGenerator/issues"
+  },
+  "homepage": "https://github.com/diemrbond/ReadmeGenerator#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "inquirer": "^7.3.3"
+  }
+}
