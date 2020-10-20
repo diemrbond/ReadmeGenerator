@@ -27,33 +27,22 @@ const inquirer = require("inquirer");
 const validator = require("email-validator");
 const logSymbols = require('log-symbols');
 const axios = require("axios");
+const ora = require('ora');
 
-/////////////////////
-// VALIDATE GITHUB //
-/////////////////////
+/////////////////////////////
+// VARIABLES AND CONSTANTS //
+/////////////////////////////
 
-async function checkGit(value) {
-
-    const queryUrl = `https://api.github.com/search/users?q=${value}`;
-
-    const axiosResults = await axios.get(queryUrl).then(function (res) {
-        let checkExists = res.data.total_count;
-        console.log("!!!!!!!!!!!!!!!" + checkExists);
-        if (checkExists === 1) {
-            return true;
-        }
-        return false;
-    });
-
-    return axiosResults;
-}
-
+let github_link;
+let github_avatar;
 
 /////////////////////
 // QUESTIONS ARRAY //
 /////////////////////
 
 const questions = [
+
+    // NAME
     {
         type: "input",
         message: "To get started, please enter your NAME",
@@ -61,6 +50,7 @@ const questions = [
         suffix: " *",
         validate: value => value != "" ? true : logSymbols.warning + " Please enter your NAME!"
     },
+    // GITHUB USERNAME
     {
         type: "input",
         message: "Please enter your GITHUB USERNAME",
@@ -68,20 +58,41 @@ const questions = [
         suffix: " *",
         validate: async (value) => {
 
+            const throbber = ora('Checking Github...').start();
+
             const queryUrl = `https://api.github.com/search/users?q=${value}`;
 
             const axiosResults = await axios.get(queryUrl).then(function (res) {
-                let loginName = res.data.items[0].login;
+                
+                // Check there is at least 1 user that matches
                 let totalResults = res.data.total_count;
-                if ((totalResults === 1) && (loginName === value)) {
+                let loginName;
+                
+                if (totalResults > 0){
+                    loginName = res.data.items[0].login;
+                }
+                
+                // If the user login is an exact match
+                if ((totalResults > 0) && (loginName === value)) {
+
+                    // Save the GITHUB user url and avatar for ease of use later
+                    github_link = res.data.items[0].url;
+                    github_avatar = res.data.items[0].avatar_url;
+
+                    // Return true back to promise
                     return true;
                 }
+
+                // Return error back to promise
                 return logSymbols.warning + " Please enter a valid GITHUB USERNAME!";
             });
-
+            
+            throbber.stop();
+            // Return result back to inquirer
             return axiosResults;
         }
     },
+    // EMAIL ADDRESS
     {
         type: "input",
         message: "What is your EMAIL ADDRESS?",
@@ -89,6 +100,7 @@ const questions = [
         suffix: " *",
         validate: value => validator.validate(value) ? true : logSymbols.warning + " Please enter a valid EMAIL ADDRESS!"
     },
+    // PROJECT TITLE
     {
         type: "input",
         message: "What is the TITLE of your project?",
@@ -96,42 +108,50 @@ const questions = [
         suffix: " *",
         validate: value => value != "" ? true : logSymbols.warning + " Please enter your project TITLE!"
     },
+    // DESCRIPTION
     {
         type: "input",
         message: "What is the DESCRIPTION of your project?",
         name: "description"
     },
+    // INSTALLATION INSTRUCTIONS
     {
         type: "input",
         message: "What are the INSTALLATION INSTRUCTIONS for your project?",
         name: "Installation"
     },
+    // USAGE INFORMATION
     {
         type: "input",
         message: "What is the USAGE INFORMATION for your project?",
         name: "usage"
     },
+    // CONTRIBUTION GUIDELINES
     {
         type: "input",
         message: "What are the CONTRIBUTION GUIDELINES for your project?",
         name: "contribution"
     },
+    // COLLABORATORS
     {
         type: "input",
         message: "Who are the COLLABORATORS for your project?",
         name: "collaborators"
     },
+    // TEST INSTRUCTIONS
     {
         type: "input",
         message: "What are the TEST INSTRUCTIONS for your project?",
         name: "test"
     },
+    // SCREENSHOT
     {
         type: "confirm",
         message: "Do you have a SCREENSHOT for your project?",
         name: "screenshot",
         default: true
     },
+    // SCREENSHOT URL
     {
         type: "input",
         message: "What is the URL of your SCREENSHOT?",
@@ -140,22 +160,25 @@ const questions = [
         when: (answers) => answers.screenshot === true,
         validate: value => value != "" ? true : logSymbols.warning + " Please enter a SCREENSHOT URL!"
     },
+    // LICENSE
     {
         type: "list",
-        message: "Please select a LICENCE for this project?",
+        message: "Please select a LICENSE for this project?",
         name: "license",
         choices: ["GNU GPLv3", "MIT License", "ISC License", "Apache License 2.0", "No license"]
     },
+    // LICENSE CHECK
     {
         type: "confirm",
-        message: "Are you sure you don't want to include a LICENCE?",
+        message: "Are you sure you don't want to include a LICENSE?",
         name: "license_confirm",
         default: false,
         when: (answers) => answers.license === "No license"
     },
+    // LICENSE RETRY
     {
         type: "list",
-        message: "Please select a LICENCE for this project?",
+        message: "Please select a LICENSE for this project?",
         name: "license_retry",
         suffix: " *",
         choices: ["GNU GPLv3", "MIT License", "ISC License", "Apache License 2.0"],
@@ -186,6 +209,7 @@ function init() {
         .prompt(questions)
         .then(function (response) {
 
+            console.log('\n\nCreating your README.md file...')
             // fs.writeFile(response.username + ".txt", JSON.stringify(response), function (err) {
             //     if (err) {
             //         console.log("Error: " + err);
