@@ -30,7 +30,96 @@ const inquirer = require("inquirer");
 /////////////////////
 
 const questions = [
-
+    {
+        type: "input",
+        message: "To get started, please enter your NAME",
+        name: "name"
+    }, 
+    {
+        type: "input",
+        message: "Please enter your GITHUB USERNAME",
+        name: "github"
+    }, 
+    {
+        type: "input",
+        message: "What is your EMAIL ADDRESS?",
+        name: "email",
+        validate: value => validate.validateEmail(value) ? true : logSymbols.warning + " Please enter a valid email address"
+    },
+    {
+        type: "input",
+        message: "What is the TITLE of your project?",
+        name: "title"
+    },
+    {
+        type: "input",
+        message: "What is the DESCRIPTION of your project?",
+        name: "description"
+    },
+    {
+        type: "input",
+        message: "What are the INSTALLATION INSTRUCTIONS for your project?",
+        name: "Installation"
+    },
+    {
+        type: "input",
+        message: "What is the USAGE INFORMATION for your project?",
+        name: "usage"
+    },
+    {
+        type: "input",
+        message: "Do you have any CONTRIBUTION GUIDELINES for your project?",
+        name: "contribution"
+    },
+    {
+        type: "input",
+        message: "Who are the COLLABORATORS for your project?",
+        name: "collaborators"
+    },
+    {
+        type: "confirm",
+        message: "Are there any TEST INSTRUCTIONS for your project?",
+        name: "test_confirm",
+        default: true
+    },
+    {
+        type: "input",
+        message: "What are the TEST INSTRUCTIONS for your project?",
+        name: "test",
+        when: (answers) => answers.test_confirm === true
+    },
+    {
+        type: "confirm",
+        message: "Do you have a SCREENSHOT for your project?",
+        name: "screenshot",
+        default: true
+    },
+    {
+        type: "input",
+        message: "What is the URL of your SCREENSHOT?",
+        name: "screenshot_url",
+        when: (answers) => answers.screenshot === true
+    },
+    {
+        type: "list",
+        message: "Please select a LICENCE for this project?",
+        name: "license",
+        choices: ["GNU GPLv3", "MIT License", "ISC License", "Apache License 2.0", "No license"]
+    },
+    {
+        type: "confirm",
+        message: "Are you sure you don't want to include a LICENCE?",
+        name: "license_confirm",
+        default: false,
+        when: (answers) => answers.license === "No license"
+    },
+    {
+        type: "list",
+        message: "Please select a LICENCE for this project?",
+        name: "license",
+        choices: ["GNU GPLv3", "MIT License", "ISC License", "Apache License 2.0"],
+        when: (answers) => answers.license_confirm === false
+    }
 ];
 
 ////////////////////
@@ -47,6 +136,21 @@ function writeToFile(fileName, data) {
 
 function init() {
 
+    console.log("\n//////////////////////\n// README GENERATOR //\n//////////////////////\n");
+    console.log("Please complete the following questions to complete your README.md:\n")
+
+    inquirer
+        .prompt(questions)
+        .then(function (response) {
+
+            // fs.writeFile(response.username + ".txt", JSON.stringify(response), function (err) {
+            //     if (err) {
+            //         console.log("Error: " + err);
+            //     }
+                console.log("Success!");
+            // })
+        });
+
 }
 
 //////////////////
@@ -54,3 +158,4 @@ function init() {
 //////////////////
 
 init();
+
