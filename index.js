@@ -24,6 +24,30 @@
 
 const fs = require("fs");
 const inquirer = require("inquirer");
+const validator = require("email-validator");
+const logSymbols = require('log-symbols');
+const axios = require("axios");
+
+/////////////////////
+// VALIDATE GITHUB //
+/////////////////////
+
+async function checkGit(value) {
+
+    const queryUrl = `https://api.github.com/search/users?q=${value}`;
+
+    const axiosResults = await axios.get(queryUrl).then(function (res) {
+        let checkExists = res.data.total_count;
+        console.log("!!!!!!!!!!!!!!!" + checkExists);
+        if (checkExists === 1) {
+            return true;
+        }
+        return false;
+    });
+
+    return axiosResults;
+}
+
 
 /////////////////////
 // QUESTIONS ARRAY //
@@ -33,23 +57,44 @@ const questions = [
     {
         type: "input",
         message: "To get started, please enter your NAME",
-        name: "name"
-    }, 
+        name: "name",
+        suffix: " *",
+        validate: value => value != "" ? true : logSymbols.warning + " Please enter your NAME!"
+    },
     {
         type: "input",
         message: "Please enter your GITHUB USERNAME",
-        name: "github"
-    }, 
+        name: "github",
+        suffix: " *",
+        validate: async (value) => {
+
+            const queryUrl = `https://api.github.com/search/users?q=${value}`;
+
+            const axiosResults = await axios.get(queryUrl).then(function (res) {
+                let loginName = res.data.items[0].login;
+                let totalResults = res.data.total_count;
+                if ((totalResults === 1) && (loginName === value)) {
+                    return true;
+                }
+                return logSymbols.warning + " Please enter a valid GITHUB USERNAME!";
+            });
+
+            return axiosResults;
+        }
+    },
     {
         type: "input",
         message: "What is your EMAIL ADDRESS?",
         name: "email",
-        validate: value => validate.validateEmail(value) ? true : logSymbols.warning + " Please enter a valid email address"
+        suffix: " *",
+        validate: value => validator.validate(value) ? true : logSymbols.warning + " Please enter a valid EMAIL ADDRESS!"
     },
     {
         type: "input",
         message: "What is the TITLE of your project?",
-        name: "title"
+        name: "title",
+        suffix: " *",
+        validate: value => value != "" ? true : logSymbols.warning + " Please enter your project TITLE!"
     },
     {
         type: "input",
@@ -68,7 +113,7 @@ const questions = [
     },
     {
         type: "input",
-        message: "Do you have any CONTRIBUTION GUIDELINES for your project?",
+        message: "What are the CONTRIBUTION GUIDELINES for your project?",
         name: "contribution"
     },
     {
@@ -77,16 +122,9 @@ const questions = [
         name: "collaborators"
     },
     {
-        type: "confirm",
-        message: "Are there any TEST INSTRUCTIONS for your project?",
-        name: "test_confirm",
-        default: true
-    },
-    {
         type: "input",
         message: "What are the TEST INSTRUCTIONS for your project?",
-        name: "test",
-        when: (answers) => answers.test_confirm === true
+        name: "test"
     },
     {
         type: "confirm",
@@ -98,7 +136,9 @@ const questions = [
         type: "input",
         message: "What is the URL of your SCREENSHOT?",
         name: "screenshot_url",
-        when: (answers) => answers.screenshot === true
+        suffix: " *",
+        when: (answers) => answers.screenshot === true,
+        validate: value => value != "" ? true : logSymbols.warning + " Please enter a SCREENSHOT URL!"
     },
     {
         type: "list",
@@ -116,7 +156,8 @@ const questions = [
     {
         type: "list",
         message: "Please select a LICENCE for this project?",
-        name: "license",
+        name: "license_retry",
+        suffix: " *",
         choices: ["GNU GPLv3", "MIT License", "ISC License", "Apache License 2.0"],
         when: (answers) => answers.license_confirm === false
     }
@@ -136,8 +177,10 @@ function writeToFile(fileName, data) {
 
 function init() {
 
+    console.clear();
+
     console.log("\n//////////////////////\n// README GENERATOR //\n//////////////////////\n");
-    console.log("Please complete the following questions to complete your README.md:\n")
+    console.log("Please complete the following questions to complete your README.md\n -> Note: * indicates required fields.\n")
 
     inquirer
         .prompt(questions)
@@ -147,7 +190,7 @@ function init() {
             //     if (err) {
             //         console.log("Error: " + err);
             //     }
-                console.log("Success!");
+            console.log(response);
             // })
         });
 
@@ -158,4 +201,3 @@ function init() {
 //////////////////
 
 init();
-
