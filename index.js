@@ -28,6 +28,7 @@ const validator = require("email-validator");
 const logSymbols = require('log-symbols');
 const axios = require("axios");
 const ora = require('ora');
+const markdown = require("./utils/generateMarkdown.js");
 
 /////////////////////////////
 // VARIABLES AND CONSTANTS //
@@ -127,7 +128,7 @@ const questions = [
         type: "input",
         message: "What are the INSTALLATION INSTRUCTIONS for your project?\n ",
         suffix: " Provide a step-by-step description of how to get the development environment running.\n ",
-        name: "Installation"
+        name: "installation"
     },
     // USAGE INFORMATION
     {
@@ -225,12 +226,18 @@ function init() {
         .then(function (response) {
 
             console.log('\nCreating your README.md file...')
-            // fs.writeFile(response.username + ".txt", JSON.stringify(response), function (err) {
-            //     if (err) {
-            //         console.log("Error: " + err);
-            //     }
             console.log(response);
-            // })
+
+            let readme = markdown.generateMarkdown(response);
+
+            console.log("README:" + readme)
+
+            fs.writeFile("README.md", readme, function (err) {
+                if (err) {
+                    console.log("Sorry, there was an error writing to the README.md: " + err);
+                }
+                console.log("Congratulations, your README.md file has now been created.");
+            })
         });
 
 }
