@@ -206,9 +206,9 @@ function init() {
             // Write the file to the readme
             fs.writeFile("README.md", readme, function (err) {
                 if (err) {
-                    console.log("Sorry, there was an error writing to the README.md: " + err);
+                    console.log("\nSorry, there was an error writing to the README.md: " + err);
                 }
-                console.log("Congratulations, your README.md file has now been created.\nGo forth and code!");
+                console.log("\nCongratulations, your README.md file has now been created.\nGo forth and code!");
             })
         });
 
