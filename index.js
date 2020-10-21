@@ -81,7 +81,7 @@ const questions = [
                 if ((totalResults > 0) && (loginName === value)) {
 
                     // Save the GITHUB user url and avatar for ease of use later
-                    github_link = res.data.items[0].url;
+                    github_link = res.data.items[0].html_url;
                     github_avatar = res.data.items[0].avatar_url;
 
                     // Return true back to promise

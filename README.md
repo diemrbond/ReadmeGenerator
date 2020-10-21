@@ -1,48 +1,58 @@
-# Project Title
+# skfljnsdlfsdf
 
-  [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
-  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-  [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
-  ## Description 
-  Description
+## Description 
+  _<< Please fill in your project's description >>_ 
 
-  false
-  undefined
+<img src="Screenshot.png" width="600" />
 
-  ## Table of Contents
+## Table of Contents
 
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Credits](#credits)
   * [License](#license)
   * [Contributing](#contributing)
   * [Tests](#tests)
+  * [Credits](#credits)
+  * [Questions](#questions)
 
-  ## Installation
-  Instructions
+## Installation 
+  _<< Please fill in your project's installation instructions >>_ 
 
-  ## Usage
-  Usage
+## Usage 
+  _<< Please fill in your project's usage instructions >>_ 
 
-  ## Credits
-  Andrew
-  Collaborators
+## License 
+  This application is licensed under: ISC License
+  
+Copyright (c) afasfasf
 
-  ## License
-  GNU GPLv3
-  undefined
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
-  ## Contributing
-  Contribution
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+      ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-  ## Tests
-  Test
+## Contributing 
+  _<< Please fill in your project's contribution instructions >>_ 
 
-  ## Questions
-  Andrew
-  diemrbond
-  andrew@cell-media.com
+## Tests 
+_<< Please fill in your project's test instructions >>_ 
 
+## Credits 
+Thanks to the following for contributing to this project:
+afasfasf 
+
+## Questions
+  If you have any questions about this project, please feel free to contact me via the following information:
+
+  <img src="https://avatars3.githubusercontent.com/u/32446328?v=4" width="50" />
+
+  afasfasf
+
+  https://github.com/diemrbond
+
+  [asfa@asfasf.com](mailto:asfa@asfasf.com)
+
+  ---
+  © 2020 Andrew Kelleher | www.github.com/diemrbond
