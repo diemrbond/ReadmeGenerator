@@ -6,6 +6,7 @@
 
 
   <img src="screenshot.jpg" width="600" /> <br>
+    <img src="gif.gif" /> <br>
     
 
   ---
@@ -30,7 +31,9 @@
   ---
   ## Usage 
   _<< Please fill in your project's usage instructions >>_ 
-  n
+
+
+  
   ---
   ## Contributing 
   _<< Please fill in your project's contribution instructions >>_ 

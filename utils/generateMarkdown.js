@@ -112,8 +112,8 @@ function generateMarkdown(data, link, avatar) {
   // Add the usage instructions
   if (data.description == '') {
     readme_return += `## Usage 
-  _<< Please fill in your project's usage instructions >>_ \n\
-  n`
+  _<< Please fill in your project's usage instructions >>_ \n\n
+  `
   }
   else {
     readme_return += `## Usage 
