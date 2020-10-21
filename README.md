@@ -1,14 +1,11 @@
-# Project Title
+# Readme Generator
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ## Description 
-  Description
+  _<< Please fill in your project's description >>_ 
 
 
-  <img src="SCreenshot" width="600" />
-
-
+  <img src="screenshot.jpg" width="600" /> <br>
     
 
   ---
@@ -26,16 +23,14 @@
 
   ---
   ## Installation 
-  step by step
+  _<< Please fill in your project's installation instructions >>_ 
 
 
   
   ---
   ## Usage 
-  usage
-
-
-  
+  _<< Please fill in your project's usage instructions >>_ 
+  n
   ---
   ## Contributing 
   _<< Please fill in your project's contribution instructions >>_ 
@@ -44,7 +39,7 @@
   
   ---
   ## Tests 
-Test instructions
+_<< Please fill in your project's test instructions >>_ 
 
 
 
@@ -54,21 +49,17 @@ Thanks to the following for contributing to this project:
 
 Andrew Kelleher 
 
-Collaborators 
-
 
 
   ---
   ## License 
-  This application is licensed under: MIT License
+  This application is licensed under: GNU GPLv3
   
-Copyright (c) Andrew Kelleher
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 
   
@@ -82,7 +73,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   Github: https://github.com/diemrbond
 
-  Email: [diemasd@asdd.com](mailto:diemasd@asdd.com)
+  Email: [example@email.com](mailto:example@email.com)
 
   ---
   © 2020 Andrew Kelleher | www.github.com/diemrbond

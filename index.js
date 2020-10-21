@@ -154,6 +154,22 @@ const questions = [
         when: (answers) => answers.screenshot === true,
         validate: value => value != "" ? true : logSymbols.warning + " Please enter a SCREENSHOT URL!"
     },
+    // GIF
+    {
+        type: "confirm",
+        message: "Do you have a DEMONSTRATION GIF for your project?\n ",
+        name: "gif",
+        default: true
+    },
+    // GIF URL
+    {
+        type: "input",
+        message: "What is the URL of your DEMONSTRATION GIF?",
+        name: "gif_url",
+        suffix: " *\n You can use either absolute http://full/path/to/img.gif or relative /relative/path/to/img.gif\n ",
+        when: (answers) => answers.gif === true,
+        validate: value => value != "" ? true : logSymbols.warning + " Please enter a DEMONSTRATION GIF URL!"
+    },
     // LICENSE
     {
         type: "list",

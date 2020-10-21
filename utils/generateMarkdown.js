@@ -64,7 +64,13 @@ function generateMarkdown(data, link, avatar) {
 
   // Add the screenshot if selected
   if (data.screenshot) {
-    readme_return += `<img src="${data.screenshot_url}" width="600" />\n\n
+    readme_return += `<img src="${data.screenshot_url}" width="600" /> <br>
+    `
+  }
+
+  // Add the video if selected
+  if (data.gif) {
+    readme_return += `<img src="${data.gif_url}" /> <br>
     `
   }
 
