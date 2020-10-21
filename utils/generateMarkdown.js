@@ -33,7 +33,6 @@ function generateMarkdown(data, link, avatar) {
   let chosen_license;
   let licence_link;
 
-  console.log("data.license_confirm: " + data.license_confirm)
   if ((data.license != "No license") && (data.license_confirm == undefined)) {
     chosen_license = data.license;
   }
@@ -74,86 +73,137 @@ function generateMarkdown(data, link, avatar) {
   // Add the description
   if (data.description == '') {
     readme_return += `## Description 
-  _<< Please fill in your project's description >>_ \n\n`
+  _<< Please fill in your project's description >>_ \n\n
+  `
   }
   else {
     readme_return += `## Description 
-  ${data.description}\n\n`
+  ${data.description}\n\n
+  `
   }
 
   // Add the screenshot if selected
   if (data.screenshot) {
-    readme_return += `<img src="${data.screenshot_url}" width="600" />\n\n`
+    readme_return += `<img src="${data.screenshot_url}" width="600" />\n\n
+    `
   }
 
   // Add the table of contents
-  readme_return += `## Table of Contents
+  readme_return += `\n
+  ---
+  ## Table of Contents
 
   * [Installation](#installation)
   * [Usage](#usage)
-  * [License](#license)
   * [Contributing](#contributing)
   * [Tests](#tests)
   * [Credits](#credits)
-  * [Questions](#questions)\n\n`
+  * [License](#license)
+  * [Questions](#questions)`
+
+  // Add some spacing
+  readme_return += `\n\n\n
+  ---
+  `
 
   // Add the installation instructions
   if (data.description == '') {
     readme_return += `## Installation 
-  _<< Please fill in your project's installation instructions >>_ \n\n`
+  _<< Please fill in your project's installation instructions >>_ \n\n
+  `
   }
   else {
     readme_return += `## Installation 
-  ${data.installation}\n\n`
+  ${data.installation}\n\n
+  `
   }
 
-  // Add the usgae instructions
+  // Add some spacing
+  readme_return += `
+  ---
+  `
+
+  // Add the usage instructions
   if (data.description == '') {
     readme_return += `## Usage 
-  _<< Please fill in your project's usage instructions >>_ \n\n`
+  _<< Please fill in your project's usage instructions >>_ \n\
+  n`
   }
   else {
     readme_return += `## Usage 
-  ${data.usage}\n\n`
+  ${data.usage}\n\n
+  `
   }
 
-  // Add the license
-  readme_return += `## License 
-  This application is licensed under: ${chosen_license}
-  ${licence_link}\n\n`
+  // Add some spacing
+  readme_return += `
+  ---
+  `
 
   // Add the contributing instructions
   if (data.contribution == '') {
     readme_return += `## Contributing 
-  _<< Please fill in your project's contribution instructions >>_ \n\n`
+  _<< Please fill in your project's contribution instructions >>_ \n\n
+  `
   }
   else {
     readme_return += `## Contributing 
-  ${data.contribution}\n\n`
+  ${data.contribution}\n\n
+  `
   }
+
+  // Add some spacing
+  readme_return += `
+  ---
+  `
 
   // Add the test instructions
   if (data.test == '') {
     readme_return += `## Tests 
-_<< Please fill in your project's test instructions >>_ \n\n`
+_<< Please fill in your project's test instructions >>_ \n\n
+`
   }
   else {
     readme_return += `## Tests 
-${data.test}\n\n`
+${data.test}\n\n
+`
   }
+
+  // Add some spacing
+  readme_return += `
+  ---
+  `
 
   // Add the credits
   if (data.collaborators == '') {
     readme_return += `## Credits 
-Thanks to the following for contributing to this project:
-${data.name} \n\n`
+Thanks to the following for contributing to this project: \n
+${data.name} \n\n
+`
   }
   else {
     readme_return += `## Credits 
-Thanks to the following for contributing to this project:
-${data.name}
-${data.collaborators} \n\n`
+Thanks to the following for contributing to this project: \n
+${data.name} \n
+${data.collaborators} \n\n
+`
   }
+
+  // Add some spacing
+  readme_return += `
+  ---
+  `
+
+  // Add the license
+  readme_return += `## License 
+  This application is licensed under: ${chosen_license}
+  ${licence_link}\n\n
+  `
+
+  // Add some spacing
+  readme_return += `
+  ---
+  `
 
   // Add the questions section
   readme_return += `## Questions
