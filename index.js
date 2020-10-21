@@ -220,7 +220,7 @@ function init() {
             console.log('\nCreating your README.md file...')
             console.log(response);
 
-            let readme = markdown.generateMarkdown(response);
+            let readme = markdown.generateMarkdown(response, github_link, github_avatar);
 
             fs.writeFile("README.md", readme, function (err) {
                 if (err) {
