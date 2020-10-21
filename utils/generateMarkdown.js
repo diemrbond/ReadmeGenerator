@@ -24,34 +24,74 @@
 
 function generateMarkdown(data) {
 
-  return `# ${data.title}
+  // Add the project title
+  let readme_return = `# ${data.title}\n\n`
 
-  ${data.badge}
+  // Add the license badge, if selected
+  // And record the chosen license for later
+  let chosen_license;
 
-  ## Description 
-  ${data.description}
+  if ((data.license != "No license") && (data.license_confirm != true)) {
+    if (data.license === "No license") {
+      chosen_license = data.license_retry;
+    }
+    else {
+      chosen_license = data.license;
+    }
 
-  ${data.screenshot}
-  ${data.screenshot_url}
+    switch (chosen_license) {
+      case "GNU GPLv3":
+        readme_return += `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)\n\n`;
+        break;
+      case "MIT License":
+        readme_return += `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n\n`
+        break;
+      case "ISC License":
+        readme_return += `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)\n\n`
+        break;
+      case "Apache License 2.0":
+        readme_return += `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)\n\n`
+        break;
+      case "Creative Commons 1.0":
+        readme_return += `[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)\n\n`
+        break;
+    }
+  }
+  else {
+    chosen_license = "No license";
+  }
 
+  // Add the description
+  if (data.description == '') {
+    readme_return += `## Description 
+  _<< Please fill in your project's description >>_ \n\n`
+  }
+  else {
+    readme_return += `## Description 
+  ${data.description}\n\n`
+  }
+
+  // Add the screenshot if selected
+  if (data.screenshot) {
+    readme_return += `![GitHub Logo](${data.screenshot_url})\n\n`
+  }
+
+  readme_return += `
   ## Table of Contents
 
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Credits](#credits)
   * [License](#license)
   * [Contributing](#contributing)
   * [Tests](#tests)
+  * [Credits](#credits)
+  * [Questions](#questions)
 
   ## Installation
   ${data.installation}
 
   ## Usage
   ${data.usage}
-
-  ## Credits
-  ${data.name}
-  ${data.collaborators}
 
   ## License
   ${data.license}
@@ -63,12 +103,18 @@ function generateMarkdown(data) {
   ## Tests
   ${data.test}
 
+  ## Credits
+  ${data.name}
+  ${data.collaborators}
+
   ## Questions
   ${data.name}
   ${data.github}
   ${data.email}
 
 `;
+
+  return readme_return;
 }
 
 // Export the generate markdown function

@@ -180,7 +180,7 @@ const questions = [
         message: "Please select a LICENSE for this project?\n ",
         name: "license",
         suffix: " For more information, visit https://choosealicense.com/\n ",
-        choices: ["GNU GPLv3", "MIT License", "ISC License", "Apache License 2.0", "No license"]
+        choices: ["GNU GPLv3", "MIT License", "ISC License", "Apache License 2.0", "Creative Commons 1.0", "No license"]
     },
     // LICENSE CHECK
     {
@@ -197,18 +197,10 @@ const questions = [
         message: "Please select a LICENSE for this project?",
         name: "license_retry",
         suffix: " *\n For more information, visit https://choosealicense.com/\n ",
-        choices: ["GNU GPLv3", "MIT License", "ISC License", "Apache License 2.0"],
+        choices: ["GNU GPLv3", "MIT License", "ISC License", "Apache License 2.0", "Creative Commons 1.0"],
         when: (answers) => answers.license_confirm === false
     }
 ];
-
-////////////////////
-// README CREATOR //
-////////////////////
-
-function writeToFile(fileName, data) {
-
-}
 
 ////////////////////
 // INIT FUNCTIONS //
@@ -229,8 +221,6 @@ function init() {
             console.log(response);
 
             let readme = markdown.generateMarkdown(response);
-
-            console.log("README:" + readme)
 
             fs.writeFile("README.md", readme, function (err) {
                 if (err) {
