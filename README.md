@@ -1,13 +1,14 @@
-# Readme Generator
+# Professional README Generator
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Description 
-  _<< Please fill in your project's description >>_ 
+  This app will allow you to create a professional readme.md file for your github directory, just by answering some simple question prompts.
 
 
-  <img src="screenshot.jpg" width="600" /> <br>
-    <img src="gif.gif" /> <br>
-    
+  <img src="assets/img/screenshot.jpg" width="600" /> <br>
+    <img src="assets/img/demo.gif" width="600" /> <br>
+    https://www.youtube.com/watch?v=yEKPU8vikUM
 
   ---
   ## Table of Contents
@@ -24,25 +25,27 @@
 
   ---
   ## Installation 
-  _<< Please fill in your project's installation instructions >>_ 
+  1. Using git bash (or equivalent) type `git clone https://github.com/diemrbond/ReadmeGenerator.git`<br/>
+  2. Change into the new directory by typing `cd ReadmeGenerator`<br/>
+  3. Type `npm install`
 
 
   
   ---
   ## Usage 
-  _<< Please fill in your project's usage instructions >>_ 
+  To use this app, from git bash (or equivalent) type `node index.js` and follow the onscreen instructions.
 
 
   
   ---
   ## Contributing 
-  _<< Please fill in your project's contribution instructions >>_ 
+  If you would like to collaborate on this project, please send a pull-request or follow my contact details to get in touch.
 
 
   
   ---
   ## Tests 
-_<< Please fill in your project's test instructions >>_ 
+Unfortunately, no test coverage has been included as yet.
 
 
 
@@ -56,13 +59,15 @@ Andrew Kelleher
 
   ---
   ## License 
-  This application is licensed under: GNU GPLv3
+  This application is licensed under: MIT License
   
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Copyright (c) Andrew Kelleher
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
   

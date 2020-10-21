@@ -70,7 +70,7 @@ function generateMarkdown(data, link, avatar) {
 
   // Add the video if selected
   if (data.gif) {
-    readme_return += `<img src="${data.gif_url}" /> <br>
+    readme_return += `<img src="${data.gif_url}" width="600" /> <br>
     `
   }
 
